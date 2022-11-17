@@ -12,33 +12,22 @@
         :loop="true"
         class="h-full"
       >
-        <swiper-slide>
+        <swiper-slide v-for="project in projects" :key="project.title">
           <div class="px-4 w-full h-full">
-            <div class="bg-black swiper-content h-full w-full"></div>
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="px-4 w-full h-full">
-            <div class="bg-black swiper-content h-full w-full"></div>
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="px-4 w-full h-full">
-            <div class="bg-black swiper-content h-full w-full"></div>
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="px-4 w-full h-full">
-            <div class="bg-black swiper-content h-full w-full"></div>
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="px-4 w-full h-full">
-            <div class="bg-black swiper-content h-full w-full"></div>
+            <div
+              class="swiper-content h-full w-full bg-center bg-cover rounded-lg shadow-lg"
+              :style="{ backgroundImage: `url(${project.image})` }"
+            ></div>
           </div>
         </swiper-slide>
       </swiper>
     </div>
+  </div>
+
+  <div
+    class="absolute bottom-0 right-0 bg-black text-white text-2xl px-4 py-4 font-semibold"
+  >
+    Swipe or scroll to toggle through
   </div>
 </template>
 <script setup>
@@ -52,6 +41,29 @@ const modules = ref([A11y, Mousewheel]);
 onMounted(() => {
   mousewheelListener();
 });
+
+const projects = ref([
+  {
+    title: "Godwin",
+    image: "https://i.ibb.co/gFKdmj8/Screenshot-from-2022-10-30-10-08-13.png",
+  },
+  {
+    title: "Amelia",
+    image: "https://i.ibb.co/c3dQrvv/Screenshot-from-2022-10-30-10-28-53.png",
+  },
+  {
+    title: "Afrobeats",
+    image: "https://i.ibb.co/thzy4BS/Screenshot-from-2022-11-18-00-11-45.png",
+  },
+  {
+    title: "Vinyl Fever",
+    image: "https://i.ibb.co/47gPRsr/Screenshot-from-2022-11-18-00-14-21.png",
+  },
+  {
+    title: "Yemisi",
+    image: "https://i.ibb.co/5rv92y6/Screenshot-from-2022-10-31-16-00-20.png",
+  },
+]);
 
 function mousewheelListener() {
   document.addEventListener("wheel", (e) => {
